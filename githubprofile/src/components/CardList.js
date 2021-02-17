@@ -1,18 +1,12 @@
 import React from 'react';
 import Card from './card';
 
-const testData=[
-    
-    {avatar:"https://avatars.githubusercontent.com/u/15624650?v=4", name:"fyzact", company:"Tetris Solutions"},
-    {avatar:"https://avatars.githubusercontent.com/u/15624650?v=4", name:"fyzact", company:"Tetris Solutions"},
-    {avatar:"https://avatars.githubusercontent.com/u/15624650?v=4", name:"fyzact", company:"Tetris Solutions"}
-]
 
 
-const CardList=()=>{
+const CardList=(props)=>{
 
     return <>
-    {testData.map(profile=><Card {...profile} />)}
+    {props.profiles.map(profile=><Card {...profile} />)}
     </>
 
 }
