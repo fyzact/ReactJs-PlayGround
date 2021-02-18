@@ -12,7 +12,11 @@ const StarMatch = () => {
   const candidateAreWrong=mathUtils.sum(candidateNumbers)>stars;
   const gameIsDone=availableNumbers.length===0;
 
-
+  const resetGame=()=>{
+    setStars(mathUtils.random(1,9));
+    setAvailableNumbers(mathUtils.range(1,9));
+    setCandidateNumbers([]);
+  }
   
 
   const NumberStatus=(number)=>{
@@ -56,7 +60,7 @@ const StarMatch = () => {
       <div className="body">
         <div className="left">
           {
-      gameIsDone?<PlayAgain/>:  <StartPlay count={stars} />
+      gameIsDone?<PlayAgain resetGame={resetGame}/>:  <StartPlay count={stars} />
           }
      
         </div>
@@ -82,7 +86,7 @@ const PlayAgain=(props)=>{
 
   return (
     <div className="game-done">
-    <button onClick={()=>console.log("empty")}>Play Again </button>
+    <button  style={{height:"100%",width:"100%"}} onClick={()=> props.resetGame()}>Play Again </button>
     </div>
   )
 
