@@ -6,9 +6,15 @@ const StarMatch = () => {
   const [stars, setStars]=useState(mathUtils.random(1,9));
   const [availableNumbers,setAvailableNumbers]=useState(mathUtils.range(1,9))
   const [candidateNumbers,setCandidateNumbers]=useState([])
+
+
   
-const candidateAreWrong=mathUtils.sum(candidateNumbers)>stars;
+  const candidateAreWrong=mathUtils.sum(candidateNumbers)>stars;
+  const gameIsDone=availableNumbers.length===0;
+
+
   
+
   const NumberStatus=(number)=>{
   
     console.log(number);
@@ -49,7 +55,10 @@ const candidateAreWrong=mathUtils.sum(candidateNumbers)>stars;
       </div>
       <div className="body">
         <div className="left">
-       <StartPlay count={stars} />
+          {
+      gameIsDone?<PlayAgain/>:  <StartPlay count={stars} />
+          }
+     
         </div>
         <div className="right">
         {mathUtils.range(1,9).map(number=>
@@ -69,7 +78,15 @@ const candidateAreWrong=mathUtils.sum(candidateNumbers)>stars;
 };
 
 
+const PlayAgain=(props)=>{
 
+  return (
+    <div className="game-done">
+    <button onClick={()=>console.log("empty")}>Play Again </button>
+    </div>
+  )
+
+}
 
 const ButtonNumber=(props)=> <button className="number"
  style={{backgroundColor:color[props.status]}} 
