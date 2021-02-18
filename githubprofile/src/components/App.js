@@ -3,12 +3,6 @@ import React from 'react';
 import CardList from './CardList';
 import FindProfileForm from './FindProfileForm';
 
-const testData=[
-    
-  {avatar:"https://avatars.githubusercontent.com/u/15624650?v=4", name:"fyzact", company:"Tetris Solutions"},
-  {avatar:"https://avatars.githubusercontent.com/u/15624650?v=4", name:"fyzact", company:"Tetris Solutions"},
-  {avatar:"https://avatars.githubusercontent.com/u/15624650?v=4", name:"fyzact", company:"Tetris Solutions"}
-]
 
 
 class App extends React.Component{
@@ -20,19 +14,20 @@ class App extends React.Component{
     
   // }
 
-  handleSubmit=(data)=>{
+  addNewProfile=(data)=>{
+    this.setState({ profiles:[...this.state.profiles,data]});
     console.log(data);
   }
   
 state={
-  profiles:testData
+  profiles:[]
 }
   render(){
 
     return  <div className="App">
     <header className="Header">
      {this.props.title}
-     <FindProfileForm  handleSubmit={this.handleSubmit} />
+     <FindProfileForm  addNewProfile={this.addNewProfile} />
      <CardList profiles={this.state.profiles} />
     </header>
 

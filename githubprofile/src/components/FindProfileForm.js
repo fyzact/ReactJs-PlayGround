@@ -8,8 +8,11 @@ class FindProfileForm extends  Component {
         event.preventDefault();
         // console.log(this.userInput.current.value);
         console.log(this.state.userName);
-       var userData=await axios.get(`https://api.github.com/users/${this.state.userName}`);
-       this.props.handleSubmit(userData);
+       var resp=await axios.get(`https://api.github.com/users/${this.state.userName}`);
+       this.props.addNewProfile(resp.data);
+       this.setState({
+           userName:''
+       });
     }
     state={
         userName:""

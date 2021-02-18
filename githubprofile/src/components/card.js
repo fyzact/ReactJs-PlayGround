@@ -9,7 +9,7 @@ class Card extends React.Component {
         const profile=this.props; 
         return ( 
             <div className="github-profile">
-                <img src={profile.avatar}></img>
+                <img src={profile.avatar_url}></img>
                 <div className="info">
                     <div className="name">
                         {profile.name}
