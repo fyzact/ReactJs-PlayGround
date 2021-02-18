@@ -1,11 +1,15 @@
 import React, { Component }  from 'react';
+import axios from 'axios';
+
 
 class FindProfileForm extends  Component {
     // userInput=React.createRef();
-    handleSubmit=(event)=>{
+    handleSubmit=async (event)=>{
         event.preventDefault();
         // console.log(this.userInput.current.value);
         console.log(this.state.userName);
+       var userData=await axios.get(`https://api.github.com/users/${this.state.userName}`);
+       this.props.handleSubmit(userData);
     }
     state={
         userName:""

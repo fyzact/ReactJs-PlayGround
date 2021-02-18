@@ -19,6 +19,10 @@ class App extends React.Component{
   //   }
     
   // }
+
+  handleSubmit=(data)=>{
+    console.log(data);
+  }
   
 state={
   profiles:testData
@@ -28,7 +32,7 @@ state={
     return  <div className="App">
     <header className="Header">
      {this.props.title}
-     <FindProfileForm/>
+     <FindProfileForm  handleSubmit={this.handleSubmit} />
      <CardList profiles={this.state.profiles} />
     </header>
 
