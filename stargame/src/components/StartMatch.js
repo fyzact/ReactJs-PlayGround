@@ -4,8 +4,8 @@ import mathUtils   from "../utils/math-utils";
 
 const StarMatch = () => {
   const [stars, setStars]=useState(mathUtils.random(1,9));
-  const [availableNumbers,setAwailableNumbers]=useState(mathUtils.range(1,9))
-  const [candidateNumbers,setCondidateNumbers]=useState([])
+  const [availableNumbers,setAvailableNumbers]=useState(mathUtils.range(1,9))
+  const [candidateNumbers,setCandidateNumbers]=useState([])
   
 const candidateAreWrong=mathUtils.sum(candidateNumbers)>stars;
   
@@ -21,6 +21,24 @@ const candidateAreWrong=mathUtils.sum(candidateNumbers)>stars;
     }
 
     return "available";
+  }
+
+  const onNumbeClick=(number,currentStaus)=>{
+
+    if(currentStaus==="used") return;
+
+    var newCandidateNum=currentStaus==="available"? candidateNumbers.concat(number):candidateNumbers.filter(p=>p!==number);
+    if(mathUtils.sum(newCandidateNum)!==stars){
+      setCandidateNumbers(newCandidateNum);
+    }else{
+      var newAvailableNum=availableNumbers.filter(n=>
+        !newCandidateNum.includes(n)
+      )
+      setAvailableNumbers(newAvailableNum);
+      setStars(mathUtils.randomSumIn(newAvailableNum,9));
+      setCandidateNumbers([]);
+    }
+
   }
   
   return (
@@ -39,6 +57,7 @@ const candidateAreWrong=mathUtils.sum(candidateNumbers)>stars;
         key={number} 
         number={number} 
         status={NumberStatus(number)}
+        onClick={onNumbeClick}
         />
        
         )}
@@ -51,7 +70,10 @@ const candidateAreWrong=mathUtils.sum(candidateNumbers)>stars;
 
 
 
-const ButtonNumber=(props)=> <button className="number" style={{backgroundColor:color[props.status]}} onClick={()=>console.log(props.number)}>  {props.number}</button>
+
+const ButtonNumber=(props)=> <button className="number"
+ style={{backgroundColor:color[props.status]}} 
+ onClick={()=>props.onClick(props.number,props.status)}>  {props.number}</button>
 
 const StartPlay=(props)=> (
      <>
