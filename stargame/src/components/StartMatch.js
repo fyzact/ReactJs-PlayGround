@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import '../assets/App.css';
 import mathUtils   from "../utils/math-utils";
 
-const StarMatch = () => {
+const Game = (props) => {
   const [stars, setStars]=useState(mathUtils.random(1,9));
   const [availableNumbers,setAvailableNumbers]=useState(mathUtils.range(1,9))
   const [candidateNumbers,setCandidateNumbers]=useState([])
@@ -75,7 +75,7 @@ const StarMatch = () => {
       <div className="body">
         <div className="left">
           {
-          gameStatus!=="active"?<PlayAgain status={gameStatus} resetGame={resetGame}/>:  <StartPlay count={stars} />
+          gameStatus!=="active"?<PlayAgain status={gameStatus} resetGame={props.newGame}/>:  <StartPlay count={stars} />
           }
      
         </div>
@@ -96,6 +96,10 @@ const StarMatch = () => {
   );
 };
 
+const StartMatch=()=>{
+const [gameId,setGameId]=useState(1);
+  return <Game key={gameId} newGame={()=>setGameId(gameId+1)} />
+}
 
 const PlayAgain=(props)=>{
 
@@ -133,4 +137,4 @@ const color={
 }
 
 
-export default StarMatch;
+export default StartMatch;
