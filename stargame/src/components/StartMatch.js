@@ -16,7 +16,7 @@ const StarMatch = () => {
   const gameStatus= availableNumbers.length===0?"won":secondLeft===0?"lost":"active";
   useEffect(()=>{
   
-    if(secondLeft!==0){
+    if(secondLeft!==0 && availableNumbers.length>0){
       console.log("rendered");
        const timeId= setTimeout(()=>setSecondLeft(secondLeft-1),1000)
        
@@ -50,7 +50,7 @@ const StarMatch = () => {
 
   const onNumbeClick=(number,currentStaus)=>{
 
-    if(currentStaus==="used") return;
+    if(gameStatus!=="active" || currentStaus==="used") return;
 
     var newCandidateNum=currentStaus==="available"? candidateNumbers.concat(number):candidateNumbers.filter(p=>p!==number);
     if(mathUtils.sum(newCandidateNum)!==stars){
