@@ -25,13 +25,6 @@ const Game = (props) => {
 
   });
 
-
-  const resetGame=()=>{
-    setStars(mathUtils.random(1,9));
-    setAvailableNumbers(mathUtils.range(1,9));
-    setCandidateNumbers([]);
-    setSecondLeft(10);
-  }
   
 
   const NumberStatus=(number)=>{
