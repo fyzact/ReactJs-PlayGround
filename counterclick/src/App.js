@@ -33,14 +33,14 @@ return (
  
   ((props.timerId!==0) ?
   <div>
-      <button disabled={props.timerId===0} onClick={onClick}>Click</button> <br/>
+      <button disabled={props.timerId===0} className="button background-black" onClick={onClick}>Click</button> <br/>
       <span>{counter}</span>
   </div>:
    <div>
      <div>
        Total Score:  <b>{counter}</b>
      </div>
-       <button  onClick={()=>console.log("New")} >Play  Again</button> <br/>
+       <button  className="button background-green" onClick={()=>console.log("New")} >Play  Again</button> <br/>
    </div>)
 
 )
