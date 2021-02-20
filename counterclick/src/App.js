@@ -5,6 +5,10 @@ import {useState,useEffect} from 'react'
 function App() {
   const [timer, setTimer]=useState(10);
 
+  const resetGame=()=>{
+    setTimer(10);
+  }
+
  useEffect(()=>{
    if(timer!==0){
     const timerId=setTimeout(()=>setTimeout(() => setTimer(timer-1),1000));
@@ -17,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Button timerId={timer}/>
+        <Button playAgain={resetGame} timerId={timer}/>
         {timer}
       </header>
     </div>
@@ -29,18 +33,24 @@ const Button=(props)=>{
 
  const onClick=()=> setCounter(counter+1);
 
+ const playAgain=()=>{
+    setCounter(0);
+    props.playAgain();
+
+  }
 return (
  
   ((props.timerId!==0) ?
   <div>
-      <button disabled={props.timerId===0} className="button background-black" onClick={onClick}>Click</button> <br/>
+      <button  disabled={props.timerId===0} className="button background-black" onClick={onClick}>Click</button> <br/>
       <span>{counter}</span>
   </div>:
    <div>
-     <div>
+     <div style={{marginBottom:20, height:"40"}}>
        Total Score:  <b>{counter}</b>
      </div>
-       <button  className="button background-green" onClick={()=>console.log("New")} >Play  Again</button> <br/>
+
+       <button    className="button background-green" onClick={playAgain} >Play  Again</button> <br/>
    </div>)
 
 )
