@@ -17,7 +17,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <Button timerId={timer}/>
         {timer}
       </header>
@@ -38,8 +37,10 @@ return (
       <span>{counter}</span>
   </div>:
    <div>
-       <button  onClick={()=>console.log("Yeni")} >New Game</button> <br/>
-       <span>{counter}</span>
+     <div>
+       Total Score:  <b>{counter}</b>
+     </div>
+       <button  onClick={()=>console.log("New")} >Play  Again</button> <br/>
    </div>)
 
 )
