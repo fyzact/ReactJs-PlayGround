@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  width: 1024px;
+  border: 1px solid #c2c2c2;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.container .title,
+.footer {
+  flex: 1 100%;
+}
+
+.container .title {
+  height: 60px;
+  background: tomato;
+  padding: 10px;
+}
+
+.container .left {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  flex: 2;
+  border-right: 1px solid #c2c2c2;
+  overflow: auto;
+  max-height: 300px;
+}
+
+.container .right {
+  padding: 10px;
+  padding: 10px;
+  flex: 1;
+}
+
+.container .footer {
+  padding: 10px;
+  height: 50px;
+  background: #c2c2c2;
+}
+
+.container .left .maclar .evsahibi,
+.misafir {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 100%;
+  padding: 5px;
+}
+.container .left .maclar {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.container .left .maclar:last-child {
+  border-bottom: none;
+}
+
+.container .left .maclar .beraberlik {
+  display: flex;
+  flex: 2;
+  padding: 5px;
+}
+.left .maclar .evsahibi .takimName {
+  display: block;
+  font-weight: bold;
+  color: #404040;
+}
+
+.left .maclar .evsahibi .oran {
+  font-weight: bold;
+  color: #fff;
+  background: #0468bf;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.left .maclar .beraberlik .oran {
+  font-weight: bold;
+  color: #fff;
+  background: #f29f05;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.left .maclar .misafir .oran {
+  font-weight: bold;
+  color: #fff;
+  background: #0468bf;
+  padding: 5px;
+  border-radius: 4px;
+}
