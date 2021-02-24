@@ -38,7 +38,10 @@ function App() {
    matchList[index].rates[newRateIndex].selected=true;
 
   const tempSelectedList=selectedList.filter(p=>p.id!==id);
-  const newSelectedList=[...tempSelectedList,{id:id, host:match.host, opponent :match.opponent, predication:selected.option, rate:selected.rate }];
+ 
+  const newSelectedList= oldRateIndex!==newRateIndex ? 
+  [...tempSelectedList,{id:id, host:match.host, opponent :match.opponent, predication:selected.option, rate:selected.rate }]
+  :tempSelectedList;
   setSelectedList(newSelectedList);
   setmatchList(matchList);
   console.log(matchList);
@@ -53,7 +56,13 @@ function App() {
     {matchList.map(p=><Match key={p.id} selected={selectRate} match={p} />)}
     </div>
 
-    <div className="right">Kupon</div>
+    <div className="right">
+    <b>  Kupon</b>
+    <br/>
+    {selectedList.map(p=><SelectedMatch key={p.id}  match={p} />)}
+   
+   
+    </div>
     <div className="footer">Total</div>
  
   </>
@@ -79,6 +88,16 @@ return (
         </div>
       </div>
 );
+}
+
+const SelectedMatch=(props)=>{
+  return (
+    <div style={{width:"100%"}}>
+    <div style={{width:"80%", float:"left"}}> {props.match.host}  - {props.match.opponent}</div> <div style={{width:"20%", float:"left", textAlign:"right"}}> x</div> 
+    <div style={{width:"80%", float:"left"}}> Mac sonucu: {props.match.predication}</div> <div style={{width:"20%", float:"left", textAlign:"right"}}> {props.match.rate}</div> 
+    </div>
+  )
+
 }
 
 
