@@ -63,7 +63,10 @@ function App() {
    
    
     </div>
-    <div className="footer">Total</div>
+    <div className="footer">
+      {selectedList.length > 0 ? selectedList.reduce((a, b) => a * b.rate, 1).toFixed(2):0}
+    
+    </div>
  
   </>
   );
