@@ -1,8 +1,9 @@
 import React from  "react";
-import {render} from "react-dom"
-import {BrowserRouter as Router} from "react-router-dom"
+import {render} from "react-dom";
+import {BrowserRouter as Router } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
-import App from "./components/App"
+import App from "./App";
+import "./index.css";
 
 //creareclass component
 // var SayHi1=React.createClass({
@@ -29,7 +30,7 @@ import App from "./components/App"
     
 // }
 
-//function component
+// function component
 // function SayHi(props){
 //     return <p>Hi {props.name}
 //     </p>
@@ -40,7 +41,10 @@ import App from "./components/App"
 //     </p>
 // }
 
-render(<Router>
-<App />
+render(
+ <Router>
+     <App />
+ </Router>
+        
 
-</Router> ,document.getElementById("app"))
+ ,document.getElementById("app"))
