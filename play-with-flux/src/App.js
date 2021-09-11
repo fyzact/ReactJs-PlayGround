@@ -10,7 +10,7 @@ const [courses, setCourses ]=useState(store.getCourses());
 
 useEffect(()=>{
   store.addChangeListener(onChange);
-  if(courses.length===0) courseAction.loadCourses();
+  if(store.getCourses().length===0) courseAction.loadCourses();
   return ()=>store.removeChangeListener(onchange);
 }, []);
 
