@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class AboutPage extends React.Component{
 
@@ -7,7 +8,8 @@ class AboutPage extends React.Component{
            <>
                 <h2>About</h2>
                 <p>This app user</p>
-                <a href="/home">Home</a>
+
+                <Link  to="/" className="btn btn-primary">Home</Link> 
        </>
        )
     }
