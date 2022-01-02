@@ -10,7 +10,7 @@ class HomePage extends React.Component{
     
     render(){
         return (
-            <div >
+            <div className="jumbotron" >
             <h1>Firt Sample </h1>
             <p>React, Redux, and React</p>
             <Link to="/about" className="btn btn-primary btn-lg">
