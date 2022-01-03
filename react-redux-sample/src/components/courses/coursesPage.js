@@ -4,7 +4,6 @@ import * as courseActions from "../../redux/actions/courseActions"
 import PropTypes from "prop-types"; 
 
 
-
 class CoursesPage extends React.Component{
     // constructor(props){
     //     super(props)
@@ -30,7 +29,8 @@ class CoursesPage extends React.Component{
 
     handleSubmit=(event)=>{
         event.preventDefault();
-        this.props.dispatch(courseActions.createCourse(this.state.course));
+        // this.props.createCourse(courseActions.createCourse(this.state.course));
+        this.props.create_Course(this.state.course);
     }
   render (){
       return (<form onSubmit={this.handleSubmit}>
@@ -51,8 +51,14 @@ function mapStateToProps(state){
         courses:state.courses
     }
 }
+
+function mapDispatchToProps(dispatch){
+    return {
+        create_Course:course=>dispatch(courseActions.createCourse(course))
+    }
+}
 CoursesPage.propTypes={
-    dispatch:PropTypes.func.isRequired,
+    create_Course:PropTypes.func.isRequired,
     courses:PropTypes.array.isRequired
 }
-export default connect(mapStateToProps)(CoursesPage);
+export default connect(mapStateToProps,mapDispatchToProps)(CoursesPage);
