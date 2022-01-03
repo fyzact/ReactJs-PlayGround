@@ -4,7 +4,10 @@ import {BrowserRouter as Router } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 import App from "./App";
 import "./index.css";
+import configureStore  from "./redux/configureStore"
+import { Provider as ReactProvider } from "react-redux";
 
+const store=configureStore();
 //creareclass component
 // var SayHi1=React.createClass({
 //     render:function(){
@@ -42,9 +45,11 @@ import "./index.css";
 // }
 
 render(
+<ReactProvider store={store}>
  <Router>
      <App />
- </Router>
+ </Router>        
+</ReactProvider>
         
 
  ,document.getElementById("app"))
