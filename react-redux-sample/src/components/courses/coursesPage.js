@@ -6,14 +6,12 @@ import { bindActionCreators } from "redux";
 
 
 class CoursesPage extends React.Component{
+    componentDidMount(){
+        this.props.courseActions.loadCourses();
+    }
     // constructor(props){
     //     super(props)
 
-        state={
-            course:{
-                title:""
-            }
-        }
 
     //     this.handleChange=this.handleChange.bind(this); You must di that when your handle method is classic funtion
     // }
@@ -23,30 +21,18 @@ class CoursesPage extends React.Component{
 
     // }
 
-    handleChange=event=>{
-             const course={...this.state.course, title:event.target.value};
-             this.setState({course:course});
-    }
-
-    handleSubmit=(event)=>{
-        event.preventDefault();
-        // this.props.createCourse(courseActions.createCourse(this.state.course));
-        // this.props.create_Course(this.state.course);
-        this.props.courseActions.createCourse(this.state.course);
-    }
   render (){
-      return (<form onSubmit={this.handleSubmit}>
+      return (
+          <>
           <h2>Courses page</h2>
-          <h3>Ad Course</h3>
-          <input type="text" onChange={this.handleChange}  value={this.state.course.title} /> 
-          <input type="submit" value="save"/>
-          {
-              this.props.courses.map(course=>(
+      
+          {this.props.courses.map(course=>(
                   <div key={course.title}>{course.title}</div>
-              ))
-          }
-          </form> )
-  }
+              ))}
+          </>
+        )
+    }
+       
 }
 function mapStateToProps(state){
     return {
