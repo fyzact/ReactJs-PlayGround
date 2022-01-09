@@ -1,13 +1,20 @@
 import React from "react";
 import {connect} from "react-redux"
 import * as courseActions from "../../redux/actions/courseActions"
+import * as authorActions from "../../redux/actions/authorActions"
 import PropTypes from "prop-types"; 
 import { bindActionCreators } from "redux";
+import CourseList from "./courseList";
 
 
 class CoursesPage extends React.Component{
     componentDidMount(){
-        this.props.courseActions.loadCourses();
+
+        if(this.props.courses.length===0 ){
+            this.props.courseActions.loadCourses();
+            this.props.authorActions.loadAuthors();
+        }
+       
     }
     // constructor(props){
     //     super(props)
@@ -25,10 +32,8 @@ class CoursesPage extends React.Component{
       return (
           <>
           <h2>Courses page</h2>
-      
-          {this.props.courses.map(course=>(
-                  <div key={course.title}>{course.title}</div>
-              ))}
+        <CourseList courses={this.props.courses} ></CourseList>
+         
           </>
         )
     }
@@ -36,13 +41,20 @@ class CoursesPage extends React.Component{
 }
 function mapStateToProps(state){
     return {
-        courses:state.courses
+        courses:state.authors.length===0?[]: state.courses.map(course=>{
+            return {
+                ...course,
+                authorName:state.authors.find(p=>p.id==course.authorId).name
+            }
+        }),
+         authors:state.authors
     }
 }
 
 function mapDispatchToProps(dispatch){
     return {
-        courseActions:bindActionCreators(courseActions,dispatch)
+        courseActions:bindActionCreators(courseActions,dispatch),
+        authorActions:bindActionCreators(authorActions,dispatch)
         // create_Course:bindActionCreators(courseActions.createCourse,dispatch)
         // create_Course:course=>dispatch(courseActions.createCourse(course))
     }
